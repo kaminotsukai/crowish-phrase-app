@@ -1,0 +1,23 @@
+@startuml erdiagram
+
+entity "phrases" {
+    + id [PK]
+    ==
+    author_id
+    content
+    created_at
+    updated_at
+}
+
+entity "authors" {
+    + id [PK]
+    ==
+    name
+    details
+    created_at
+    updated_at
+}
+
+authors --|{ phrases
+
+@enduml
