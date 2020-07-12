@@ -1,3 +1,5 @@
+up:
+	docker-compose up -d
 myapp:
 	docker-compose exec myapp bash
 db:
