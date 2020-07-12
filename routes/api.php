@@ -17,9 +17,3 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('phrases', 'PhraseController@list');
-Route::get('phrases/{id}', 'PhraseController@show');
-Route::post('phrases', 'PhraseController@store');
-Route::delete('phrases/{id}', 'PhraseController@delete');
-Route::put('phrases/{id}', 'PhraseController@update');
