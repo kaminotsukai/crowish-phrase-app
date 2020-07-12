@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use App\Http\Requests\SavePhraseRequest;
 use App\Phrase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response;
 
 class PhraseController extends Controller
 {
@@ -15,9 +16,9 @@ class PhraseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function list(Request $request): JsonResponse
+    public function list(): JsonResponse
     {
-        $phrases = Phrase::with('author')->paginate(10);
+        $phrases = Phrase::with('author')->orderBy('created_at', 'desc')->paginate(10);
 
         return response()->json($phrases);
     }
@@ -28,43 +29,40 @@ class PhraseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): JsonResponse
+    public function store(SavePhraseRequest $request): JsonResponse
     {
         $params = $request->all();
+        $statusCode = Response::HTTP_CREATED;
 
-        DB::transaction(function () use ($params) {
+        try {
+            $author = Author::find($params['author_id']);
 
-            // 作者が重複しないようにする
-            // 既に存在している場合は取得、存在しない場合は新規登録する
-            $author = Author::firstOrCreate(
-                ['name' => $params['author_name']],
-                ['details' => $params['author_details']]
-            );
-    
             $author->phrases()->create([
                 'id' => \Str::uuid(),
-                'content' => $params['phrase_content']
+                'content' => $params['content']
             ]);
-        });
 
-        return response()->json();
+        } catch (Exception $e) {
+            $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
+        }
+        
+        return response()->json([], $statusCode);
     }
 
     /**
-     * Display the specified resource.
+     * 詳細情報取得
+     * TODO: もう少しいい書き方はないか？
      *
      * @param  \App\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function show(Phrase $phrase)
-    {
-        // $phrase = $phrase->author;
+    public function show(Phrase $phrase): JsonResponse
+    {   
+        $phrase = $phrase->with('author')->where('id', $phrase->id)->first();
 
-        // \Log::debug($phrase);
-
-        // return response()->json([
-        //     'phrase' => $phrase
-        // ]);
+        return response()->json([
+            'phrase' => $phrase
+        ]);
     }
 
     /**
@@ -74,9 +72,22 @@ class PhraseController extends Controller
      * @param  \App\Phrase  $phrase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Phrase $phrase)
+    public function update(SavePhraseRequest $request, Phrase $phrase): JsonResponse
     {
-        //
+        $params = $request->all();
+        $statusCode = Response::HTTP_OK;
+        
+        try {
+            
+            $phrase->update([
+                'content' => $params['content']
+            ]);
+
+        } catch (Exception $e) {
+            $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
+        }
+
+        return response()->json([], $statusCode);
     }
 
     /**

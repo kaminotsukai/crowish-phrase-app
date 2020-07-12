@@ -5,6 +5,7 @@
                 :id="phrase.id"
                 :content="phrase.content"
                 :subContent="phrase.author.name"
+                isDetail
                 @details="details"
             ></Card>
         </div>
@@ -24,12 +25,13 @@
 import phraseApi from '../../api/phraseApi'
 import Card from '../../components/Card/index'
 import Paginate from '../../components/Paginate/index'
+import Header from '../../components/Header/index'
 
 export default {
     name: 'phrase-list',
     components: {
         Card,
-        Paginate
+        Paginate,
     },
     data() {
         return {
@@ -50,19 +52,20 @@ export default {
             this.getList(page)
         },
         details(id) {
-            console.log(id)
+            this.$router.push({ name: 'phrase-detail', params: { id: id }})
         }
     }
 }
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 .list-wrapper {
-    margin: 0 auto;
+    margin: 0 100px;
+    width: 80%;
+    
 }
 .card-wrapper {
-    display: flex;
     margin: 20px auto;
 }
 
@@ -70,6 +73,11 @@ export default {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    transition: all .3s;
+
+    &:hover {
+        bottom: 17px;
+    }
 }
 
 .btn-circle-flat {

@@ -12,6 +12,10 @@
 
 ## フォルダ構成
 ```
+-------------
+Laravel作り立て
+-------------
+
 app
   Console
   Exceptions
@@ -41,6 +45,3 @@ storage
 tests
 vendor
 ```
-
-
-## # crowish-phrase-app

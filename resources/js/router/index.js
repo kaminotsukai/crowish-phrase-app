@@ -3,7 +3,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import PhraseList from '../page/phrase/list'
-import PhraseRegister from '../page/phrase/register'
+import PhraseSave from '../page/phrase/save'
+import PhraseDetail from '../page/phrase/detail'
 
 Vue.use(VueRouter)
 
@@ -15,8 +16,18 @@ const routes = [
     },
     {
         path: '/phrase/register',
-        component: PhraseRegister,
+        component: PhraseSave,
         name: 'phrase-register'
+    },
+    {
+        path: '/phrase/:id/detail',
+        component: PhraseDetail,
+        name: 'phrase-detail'
+    },
+    {
+        path: '/phrase/:id/update',
+        component: PhraseSave,
+        name: 'phrase-update'
     }
 ]
 

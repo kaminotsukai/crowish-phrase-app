@@ -3,8 +3,9 @@
         <h4>{{ content }}</h4>
         <div class="flex">
             <p>{{ subContent }}</p>
-            <el-link @click="$emit('details', id)">詳しくみる<i class="el-icon-view el-icon--right"></i></el-link>
+            <el-link v-if="isDetail" @click="$emit('details', id)">詳しくみる<i class="el-icon-view el-icon--right"></i></el-link>
         </div>
+        <p>{{ detail }}</p>
     </el-card>
 </template>
 
@@ -21,7 +22,15 @@ export default {
         },
         subContent: {
             type: String,
-            required: true
+            required: false
+        },
+        detail: {
+            type: String,
+            required: false
+        },
+        isDetail: {
+            type: Boolean,
+            default: false
         }
     }
 }
