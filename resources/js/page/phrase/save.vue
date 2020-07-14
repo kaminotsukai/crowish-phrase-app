@@ -1,30 +1,13 @@
 <template>
   <div>
+    <Header />
     <div class="container">
           <el-form status-icon ref="phrase" label-width="120px" class="demo-phrase">
               <el-form-item label="名言">
                   <el-input type="text" v-model="phrase.content" autocomplete="off" placeholder="少年よ、大志を抱け"></el-input>
               </el-form-item>
               <el-form-item label="作者">
-                  <el-select
-                    v-if="!id"
-                    v-model="phrase.authorId"
-                    filterable
-                    remote
-                    reserve-keyword
-                    placeholder="ウィリアム・スミス・クラーク"
-                    :remote-method="remoteMethod"
-                    :loading="loading">
-                    <el-option
-                      v-for="item in options"
-                      :key="item.id"
-                      :label="item.name"
-                      :value="item.id">
-                    </el-option>
-                  </el-select>
-                  <p v-else>{{ authName }}</p>
-                  <br>
-                  <a href="javascript:void(0)" style="cursor: pointer;" @click="openModal">>> 作者を新規登録する</a>
+                  <el-input type="text" v-model="phrase.author_name" autocomplete="off" placeholder="ウィリアム・スミス・クラーク"></el-input>
               </el-form-item>
               <el-form-item>
                   <el-button type="primary" @click="savePhrase">{{ title }}</el-button>
@@ -32,13 +15,6 @@
           </el-form>
       </div>
 
-      <author-modal 
-        title="作者を登録"
-        content="作者を登録してください"
-        :centerDialogVisible="centerDialogVisible"
-        @close="close"
-        @register="registerAuthor"
-      />
       <notifications 
         position="top left" 
         group="save"
@@ -48,24 +24,19 @@
 
 <script>
 import phraseApi from '../../api/phraseApi'
-import authorApi from '../../api/authorApi'
-import AuthorModal from '../../components/Modal/AuthorModal/index'
 import { OK, CREATED } from '../../utils/httpStatus'
+import Header from '../../components/Header/index'
 
 export default {
   components: {
-    AuthorModal
+    Header
   },
   data() {
     return {
       phrase: {
         content: '',
-        authorId: ''
+        author_name: ''
       },
-      authName: '',
-      centerDialogVisible: false,
-      options: [],
-      loading: false
     };
   },
   computed: {
@@ -85,19 +56,9 @@ export default {
         this.getPhrase()
       }
     },
-    // TODO: selectboxの双方向バインディングができない
     async getPhrase() {
-      const { phrase } = await phraseApi.details(this.id)
-
-      this.phrase = phrase
-      this.phrase.authorId = phrase.author.id
-      this.authName = phrase.author.name
-    },
-    openModal() {
-      this.centerDialogVisible = true
-    },
-    close() {
-        this.centerDialogVisible = false
+      const { data } = await phraseApi.details(this.id)
+      this.phrase = data.phrase
     },
     async savePhrase() {
       const response = this.id ? await this.updatePhrase() : await this.registerPhrase()
@@ -126,36 +87,6 @@ export default {
     async updatePhrase() {
       return await phraseApi.update(this.phrase, this.id)
     },
-    // 作者の登録
-    async registerAuthor(author) {
-      const response = await authorApi.register(author)
-      
-      if (response.status === CREATED) {
-        this.$notify({
-          group: 'save',
-          type: 'success',
-          title: '登録完了しました',
-          text: author.name
-        });
-        
-        this.close()
-      }
-    },
-    // セレクトボタンの候補一覧取得
-    async remoteMethod(query) {
-      try {
-
-        this.loading = true
-        const { data } = await authorApi.list(query)
-        this.options = data
-
-      } finally {
-
-        this.loading = false
-
-      }
-      
-    }
   }
 }
 </script>

@@ -19,10 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('phrases', 'PhraseController@list');
-Route::get('phrases/{phrase}', 'PhraseController@show');
+Route::get('phrases/{id}', 'PhraseController@show');
 Route::post('phrases', 'PhraseController@store');
-Route::delete('phrases/{phrase}', 'PhraseController@delete');
-Route::put('phrases/{phrase}', 'PhraseController@update');
-
-Route::get('authors', 'AuthorController@list');
-Route::post('authors', 'AuthorController@store');
+Route::delete('phrases/{id}', 'PhraseController@delete');
+Route::put('phrases/{id}', 'PhraseController@update');

@@ -5,7 +5,6 @@
             <p>{{ subContent }}</p>
             <el-link v-if="isDetail" @click="$emit('details', id)">詳しくみる<i class="el-icon-view el-icon--right"></i></el-link>
         </div>
-        <p>{{ detail }}</p>
     </el-card>
 </template>
 
@@ -21,10 +20,6 @@ export default {
             required: true
         },
         subContent: {
-            type: String,
-            required: false
-        },
-        detail: {
             type: String,
             required: false
         },

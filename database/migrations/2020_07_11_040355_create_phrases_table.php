@@ -14,8 +14,8 @@ class CreatePhrasesTable extends Migration
     public function up()
     {
         Schema::create('phrases', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->integer('author_id');
+            $table->id();
+            $table->string('author_name');
             $table->string('content');
             $table->timestamps();
         });

@@ -15,9 +15,10 @@ export default {
 
     // 登録
     async register(phrase) {
+        console.log(phrase)
         const params = {
             content: phrase.content,
-            author_id: phrase.authorId
+            author_name: phrase.author_name
         }
 
         return httpClient.post('/phrases', params)
@@ -29,7 +30,7 @@ export default {
     async update(phrase, id) {
         const params = {
             content: phrase.content,
-            author_id: phrase.authorId
+            author_name: phrase.author_name
         }
 
         return httpClient.put(`/phrases/${id}`, params)
@@ -40,7 +41,7 @@ export default {
     // 詳細取得
     async details(id) {
         return httpClient.get(`/phrases/${id}`)
-        .then(response => response.data)
+        .then(response => response)
         .catch(error => error.response || error)
     },
 

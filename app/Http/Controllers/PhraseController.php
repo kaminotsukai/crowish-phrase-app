@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Author;
 use App\Http\Requests\SavePhraseRequest;
 use App\Phrase;
 use Illuminate\Http\JsonResponse;
@@ -18,7 +17,7 @@ class PhraseController extends Controller
      */
     public function list(): JsonResponse
     {
-        $phrases = Phrase::with('author')->orderBy('created_at', 'desc')->paginate(10);
+        $phrases = Phrase::orderBy('created_at', 'desc')->paginate(10);
 
         return response()->json($phrases);
     }
@@ -35,11 +34,10 @@ class PhraseController extends Controller
         $statusCode = Response::HTTP_CREATED;
 
         try {
-            $author = Author::find($params['author_id']);
-
-            $author->phrases()->create([
-                'id' => \Str::uuid(),
-                'content' => $params['content']
+        
+            Phrase::create([
+                'content' => $params['content'],
+                'author_name' => $params['author_name']
             ]);
 
         } catch (Exception $e) {
@@ -51,14 +49,13 @@ class PhraseController extends Controller
 
     /**
      * 詳細情報取得
-     * TODO: もう少しいい書き方はないか？
      *
-     * @param  \App\Phrase  $phrase
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Phrase $phrase): JsonResponse
+    public function show(int $id): JsonResponse
     {   
-        $phrase = $phrase->with('author')->where('id', $phrase->id)->first();
+        $phrase = Phrase::find($id);
 
         return response()->json([
             'phrase' => $phrase
@@ -69,18 +66,21 @@ class PhraseController extends Controller
      * 名言更新
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Phrase  $phrase
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SavePhraseRequest $request, Phrase $phrase): JsonResponse
+    public function update(SavePhraseRequest $request, int $id): JsonResponse
     {
         $params = $request->all();
         $statusCode = Response::HTTP_OK;
         
         try {
-            
+
+            $phrase = Phrase::find($id);
+
             $phrase->update([
-                'content' => $params['content']
+                'content' => $params['content'],
+                'author_name' => $params['author_name']
             ]);
 
         } catch (Exception $e) {
@@ -93,11 +93,13 @@ class PhraseController extends Controller
     /**
      * 削除
      *
-     * @param  \App\Phrase  $phrase
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function delete(Phrase $phrase): JsonResponse
+    public function delete(int $id): JsonResponse
     {
+        $phrase = Phrase::find($id);
+
         $phrase->delete();
 
         return response()->json();

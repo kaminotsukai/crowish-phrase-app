@@ -3581,7 +3581,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     id: {
@@ -3593,10 +3592,6 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     },
     subContent: {
-      type: String,
-      required: false
-    },
-    detail: {
       type: String,
       required: false
     },
@@ -3630,66 +3625,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/AuthorModal/index.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Modal/AuthorModal/index.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// TODO: 再度モーダルを開くと前の入力内容が残っている
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      author: {
-        name: null,
-        detail: null
-      }
-    };
-  },
-  props: {
-    centerDialogVisible: {
-      type: Boolean,
-      required: true
-    },
-    title: {
-      type: String,
-      required: true
-    },
-    content: {
-      type: String,
-      required: true
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Paginate/index.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Paginate/index.vue?vue&type=script&lang=js& ***!
@@ -3699,6 +3634,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -3738,6 +3674,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _api_phraseApi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api/phraseApi */ "./resources/js/api/phraseApi.js");
 /* harmony import */ var _components_Card_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Card/index */ "./resources/js/components/Card/index.vue");
+/* harmony import */ var _components_Header_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Header/index */ "./resources/js/components/Header/index.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3764,17 +3701,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'phrase-detail',
   components: {
-    Card: _components_Card_index__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Card: _components_Card_index__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Header: _components_Header_index__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
       phrase: {
         id: null,
         content: null,
-        author_id: null
+        author_name: null
       }
     };
   },
@@ -3791,7 +3730,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _yield$phraseApi$deta, phrase;
+        var _yield$phraseApi$deta, data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -3802,8 +3741,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 _yield$phraseApi$deta = _context.sent;
-                phrase = _yield$phraseApi$deta.phrase;
-                _this.phrase = phrase;
+                data = _yield$phraseApi$deta.data;
+                _this.phrase = data.phrase;
 
               case 5:
               case "end":
@@ -3909,6 +3848,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -3917,7 +3861,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: 'phrase-list',
   components: {
     Card: _components_Card_index__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Paginate: _components_Paginate_index__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Paginate: _components_Paginate_index__WEBPACK_IMPORTED_MODULE_3__["default"],
+    Header: _components_Header_index__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
@@ -3984,9 +3929,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _api_phraseApi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api/phraseApi */ "./resources/js/api/phraseApi.js");
-/* harmony import */ var _api_authorApi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/authorApi */ "./resources/js/api/authorApi.js");
-/* harmony import */ var _components_Modal_AuthorModal_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Modal/AuthorModal/index */ "./resources/js/components/Modal/AuthorModal/index.vue");
-/* harmony import */ var _utils_httpStatus__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/httpStatus */ "./resources/js/utils/httpStatus.js");
+/* harmony import */ var _utils_httpStatus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/httpStatus */ "./resources/js/utils/httpStatus.js");
+/* harmony import */ var _components_Header_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Header/index */ "./resources/js/components/Header/index.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4017,48 +3961,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    AuthorModal: _components_Modal_AuthorModal_index__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Header: _components_Header_index__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
       phrase: {
         content: '',
-        authorId: ''
-      },
-      authName: '',
-      centerDialogVisible: false,
-      options: [],
-      loading: false
+        author_name: ''
+      }
     };
   },
   computed: {
@@ -4078,12 +3993,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.getPhrase();
       }
     },
-    // TODO: selectboxの双方向バインディングができない
     getPhrase: function getPhrase() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _yield$phraseApi$deta, phrase;
+        var _yield$phraseApi$deta, data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -4094,24 +4008,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 _yield$phraseApi$deta = _context.sent;
-                phrase = _yield$phraseApi$deta.phrase;
-                _this.phrase = phrase;
-                _this.phrase.authorId = phrase.author.id;
-                _this.authName = phrase.author.name;
+                data = _yield$phraseApi$deta.data;
+                _this.phrase = data.phrase;
 
-              case 7:
+              case 5:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
       }))();
-    },
-    openModal: function openModal() {
-      this.centerDialogVisible = true;
-    },
-    close: function close() {
-      this.centerDialogVisible = false;
     },
     savePhrase: function savePhrase() {
       var _this2 = this;
@@ -4145,7 +4051,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 9:
                 response = _context2.t0;
 
-                if (response.status === _utils_httpStatus__WEBPACK_IMPORTED_MODULE_4__["CREATED"] || response.status === _utils_httpStatus__WEBPACK_IMPORTED_MODULE_4__["OK"]) {
+                if (response.status === _utils_httpStatus__WEBPACK_IMPORTED_MODULE_2__["CREATED"] || response.status === _utils_httpStatus__WEBPACK_IMPORTED_MODULE_2__["OK"]) {
                   _this2.$notify({
                     group: 'save',
                     type: 'success',
@@ -4215,75 +4121,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee4);
-      }))();
-    },
-    // 作者の登録
-    registerAuthor: function registerAuthor(author) {
-      var _this5 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.next = 2;
-                return _api_authorApi__WEBPACK_IMPORTED_MODULE_2__["default"].register(author);
-
-              case 2:
-                response = _context5.sent;
-
-                if (response.status === _utils_httpStatus__WEBPACK_IMPORTED_MODULE_4__["CREATED"]) {
-                  _this5.$notify({
-                    group: 'save',
-                    type: 'success',
-                    title: '登録完了しました',
-                    text: author.name
-                  });
-
-                  _this5.close();
-                }
-
-              case 4:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
-      }))();
-    },
-    // セレクトボタンの候補一覧取得
-    remoteMethod: function remoteMethod(query) {
-      var _this6 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-        var _yield$authorApi$list, data;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                _context6.prev = 0;
-                _this6.loading = true;
-                _context6.next = 4;
-                return _api_authorApi__WEBPACK_IMPORTED_MODULE_2__["default"].list(query);
-
-              case 4:
-                _yield$authorApi$list = _context6.sent;
-                data = _yield$authorApi$list.data;
-                _this6.options = data;
-
-              case 7:
-                _context6.prev = 7;
-                _this6.loading = false;
-                return _context6.finish(7);
-
-              case 10:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6, null, [[0,, 7, 10]]);
       }))();
     }
   }
@@ -10632,7 +10469,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n}\n", ""]);
+exports.push([module.i, "\n.container {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    margin: 0 auto;\n}\n", ""]);
 
 // exports
 
@@ -101971,9 +101808,7 @@ var render = function() {
           : _vm._e()
       ],
       1
-    ),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.detail))])
+    )
   ])
 }
 var staticRenderFns = []
@@ -102006,139 +101841,10 @@ var render = function() {
       on: { select: _vm.handleSelect }
     },
     [
-      _c("el-menu-item", { attrs: { index: "1" } }, [
-        _vm._v("Processing Center")
-      ])
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/AuthorModal/index.vue?vue&type=template&id=41e4f748&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Modal/AuthorModal/index.vue?vue&type=template&id=41e4f748& ***!
-  \**************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "el-dialog",
-    {
-      attrs: {
-        title: _vm.title,
-        visible: _vm.centerDialogVisible,
-        width: "60%",
-        center: ""
-      },
-      on: {
-        "update:visible": function($event) {
-          _vm.centerDialogVisible = $event
-        },
-        close: function($event) {
-          return _vm.$emit("close")
-        }
-      }
-    },
-    [
       _c(
-        "el-form",
-        { ref: "phrase", attrs: { "status-icon": "", "label-width": "120px" } },
-        [
-          _c(
-            "el-form-item",
-            { attrs: { label: "作者", prop: "content" } },
-            [
-              _c("el-input", {
-                attrs: {
-                  type: "text",
-                  autocomplete: "off",
-                  placeholder: "ウィリアム・スミス・クラーク"
-                },
-                model: {
-                  value: _vm.author.name,
-                  callback: function($$v) {
-                    _vm.$set(_vm.author, "name", $$v)
-                  },
-                  expression: "author.name"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "el-form-item",
-            { attrs: { label: "作者詳細" } },
-            [
-              _c("el-input", {
-                attrs: {
-                  type: "textarea",
-                  placeholder:
-                    "北海道開拓時代に活躍した「お雇い外国人」のひとりで、札幌農学校の初代教頭である"
-                },
-                model: {
-                  value: _vm.author.detail,
-                  callback: function($$v) {
-                    _vm.$set(_vm.author, "detail", $$v)
-                  },
-                  expression: "author.detail"
-                }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          staticClass: "dialog-footer",
-          attrs: { slot: "footer" },
-          slot: "footer"
-        },
-        [
-          _c(
-            "el-button",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.$emit("close")
-                }
-              }
-            },
-            [_vm._v("キャンセル")]
-          ),
-          _vm._v(" "),
-          _c(
-            "el-button",
-            {
-              attrs: { type: "primary" },
-              on: {
-                click: function($event) {
-                  return _vm.$emit("register", _vm.author)
-                }
-              }
-            },
-            [_vm._v("登録")]
-          )
-        ],
-        1
+        "el-menu-item",
+        { staticStyle: { "font-size": "16px" }, attrs: { index: "1" } },
+        [_vm._v("Phrase App")]
       )
     ],
     1
@@ -102167,6 +101873,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("el-pagination", {
+    staticStyle: { margin: "10px" },
     attrs: { background: "", layout: "prev, pager, next", total: _vm.total },
     on: { "current-change": _vm.currentChange }
   })
@@ -102196,6 +101903,8 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("Header"),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "container" },
@@ -102204,8 +101913,7 @@ var render = function() {
             attrs: {
               id: _vm.phrase.id,
               content: _vm.phrase.content,
-              subContent: _vm.phrase.author.name,
-              detail: _vm.phrase.author.details
+              subContent: _vm.phrase.author_name
             }
           }),
           _vm._v(" "),
@@ -102259,31 +101967,39 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "list-wrapper" },
     [
-      _vm._l(_vm.phrases, function(phrase) {
-        return _c(
-          "div",
-          { key: phrase.id, staticClass: "card-wrapper" },
-          [
-            _c("Card", {
-              attrs: {
-                id: phrase.id,
-                content: phrase.content,
-                subContent: phrase.author.name,
-                isDetail: ""
-              },
-              on: { details: _vm.details }
-            })
-          ],
-          1
-        )
-      }),
+      _c("Header"),
       _vm._v(" "),
-      _c("Paginate", {
-        attrs: { total: _vm.total },
-        on: { currentChange: _vm.currentChange }
-      }),
+      _c(
+        "div",
+        { staticClass: "list-wrapper" },
+        [
+          _c("Paginate", {
+            attrs: { total: _vm.total },
+            on: { currentChange: _vm.currentChange }
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.phrases, function(phrase) {
+            return _c(
+              "div",
+              { key: phrase.id, staticClass: "card-wrapper" },
+              [
+                _c("Card", {
+                  attrs: {
+                    id: phrase.id,
+                    content: phrase.content,
+                    subContent: phrase.author_name,
+                    isDetail: ""
+                  },
+                  on: { details: _vm.details }
+                })
+              ],
+              1
+            )
+          })
+        ],
+        2
+      ),
       _vm._v(" "),
       _c(
         "div",
@@ -102301,7 +102017,7 @@ var render = function() {
         1
       )
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []
@@ -102329,6 +102045,8 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("Header"),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "container" },
@@ -102367,47 +102085,20 @@ var render = function() {
                 "el-form-item",
                 { attrs: { label: "作者" } },
                 [
-                  !_vm.id
-                    ? _c(
-                        "el-select",
-                        {
-                          attrs: {
-                            filterable: "",
-                            remote: "",
-                            "reserve-keyword": "",
-                            placeholder: "ウィリアム・スミス・クラーク",
-                            "remote-method": _vm.remoteMethod,
-                            loading: _vm.loading
-                          },
-                          model: {
-                            value: _vm.phrase.authorId,
-                            callback: function($$v) {
-                              _vm.$set(_vm.phrase, "authorId", $$v)
-                            },
-                            expression: "phrase.authorId"
-                          }
-                        },
-                        _vm._l(_vm.options, function(item) {
-                          return _c("el-option", {
-                            key: item.id,
-                            attrs: { label: item.name, value: item.id }
-                          })
-                        }),
-                        1
-                      )
-                    : _c("p", [_vm._v(_vm._s(_vm.authName))]),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticStyle: { cursor: "pointer" },
-                      attrs: { href: "javascript:void(0)" },
-                      on: { click: _vm.openModal }
+                  _c("el-input", {
+                    attrs: {
+                      type: "text",
+                      autocomplete: "off",
+                      placeholder: "ウィリアム・スミス・クラーク"
                     },
-                    [_vm._v(">> 作者を新規登録する")]
-                  )
+                    model: {
+                      value: _vm.phrase.author_name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.phrase, "author_name", $$v)
+                      },
+                      expression: "phrase.author_name"
+                    }
+                  })
                 ],
                 1
               ),
@@ -102432,15 +102123,6 @@ var render = function() {
         ],
         1
       ),
-      _vm._v(" "),
-      _c("author-modal", {
-        attrs: {
-          title: "作者を登録",
-          content: "作者を登録してください",
-          centerDialogVisible: _vm.centerDialogVisible
-        },
-        on: { close: _vm.close, register: _vm.registerAuthor }
-      }),
       _vm._v(" "),
       _c("notifications", { attrs: { position: "top left", group: "save" } })
     ],
@@ -118900,77 +118582,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/api/authorApi.js":
-/*!***************************************!*\
-  !*** ./resources/js/api/authorApi.js ***!
-  \***************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _httpClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./httpClient */ "./resources/js/api/httpClient.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  // 一覧取得
-  list: function list(query) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              return _context.abrupt("return", _httpClient__WEBPACK_IMPORTED_MODULE_1__["default"].get('/authors', {
-                params: {
-                  query: query
-                }
-              }));
-
-            case 1:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }))();
-  },
-  // 作者登録
-  register: function register(author) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-      var params;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              params = {
-                name: author.name,
-                detail: author.detail
-              };
-              return _context2.abrupt("return", _httpClient__WEBPACK_IMPORTED_MODULE_1__["default"].post('/authors', params).then(function (response) {
-                return response;
-              })["catch"](function (error) {
-                return error.response || error;
-              }));
-
-            case 2:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }))();
-  }
-});
-
-/***/ }),
-
 /***/ "./resources/js/api/httpClient.js":
 /*!****************************************!*\
   !*** ./resources/js/api/httpClient.js ***!
@@ -119068,9 +118679,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
+              console.log(phrase);
               params = {
                 content: phrase.content,
-                author_id: phrase.authorId
+                author_name: phrase.author_name
               };
               return _context2.abrupt("return", _httpClient__WEBPACK_IMPORTED_MODULE_1__["default"].post('/phrases', params).then(function (response) {
                 return response;
@@ -119078,7 +118690,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return error.response || error;
               }));
 
-            case 2:
+            case 3:
             case "end":
               return _context2.stop();
           }
@@ -119096,7 +118708,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               params = {
                 content: phrase.content,
-                author_id: phrase.authorId
+                author_name: phrase.author_name
               };
               return _context3.abrupt("return", _httpClient__WEBPACK_IMPORTED_MODULE_1__["default"].put("/phrases/".concat(id), params).then(function (response) {
                 return response;
@@ -119120,7 +118732,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context4.prev = _context4.next) {
             case 0:
               return _context4.abrupt("return", _httpClient__WEBPACK_IMPORTED_MODULE_1__["default"].get("/phrases/".concat(id)).then(function (response) {
-                return response.data;
+                return response;
               })["catch"](function (error) {
                 return error.response || error;
               }));
@@ -119400,75 +119012,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_421e7ebb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_421e7ebb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Modal/AuthorModal/index.vue":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/Modal/AuthorModal/index.vue ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _index_vue_vue_type_template_id_41e4f748___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=41e4f748& */ "./resources/js/components/Modal/AuthorModal/index.vue?vue&type=template&id=41e4f748&");
-/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./resources/js/components/Modal/AuthorModal/index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _index_vue_vue_type_template_id_41e4f748___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _index_vue_vue_type_template_id_41e4f748___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Modal/AuthorModal/index.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/Modal/AuthorModal/index.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/Modal/AuthorModal/index.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/AuthorModal/index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/Modal/AuthorModal/index.vue?vue&type=template&id=41e4f748&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/Modal/AuthorModal/index.vue?vue&type=template&id=41e4f748& ***!
-  \********************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_41e4f748___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=41e4f748& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/AuthorModal/index.vue?vue&type=template&id=41e4f748&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_41e4f748___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_41e4f748___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

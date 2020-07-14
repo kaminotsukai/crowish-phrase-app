@@ -1,19 +1,24 @@
 <template>
-    <div class="list-wrapper">
-        <div class="card-wrapper" v-for="phrase in phrases" :key="phrase.id">
-            <Card
-                :id="phrase.id"
-                :content="phrase.content"
-                :subContent="phrase.author.name"
-                isDetail
-                @details="details"
-            ></Card>
-        </div>
+    <div>
+        <Header />
 
-        <Paginate 
-            :total="total"
-            @currentChange="currentChange"
-        />
+        <div class="list-wrapper">
+            
+            <Paginate 
+                :total="total"
+                @currentChange="currentChange"
+            />
+
+            <div class="card-wrapper" v-for="phrase in phrases" :key="phrase.id">
+                <Card
+                    :id="phrase.id"
+                    :content="phrase.content"
+                    :subContent="phrase.author_name"
+                    isDetail
+                    @details="details"
+                ></Card>
+            </div>
+        </div>
 
         <div class="position">
             <router-link :to="{ name: 'phrase-register' }" class="btn-circle-flat">+</router-link>
@@ -32,6 +37,7 @@ export default {
     components: {
         Card,
         Paginate,
+        Header
     },
     data() {
         return {

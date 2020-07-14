@@ -24,7 +24,7 @@ class SavePhraseRequest extends FormRequest
     public function rules()
     {
         return [
-            'author_id' => 'required|numeric',
+            'author_name' => 'required',
             'content' => 'required'
         ];
     }

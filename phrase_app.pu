@@ -3,21 +3,10 @@
 entity "phrases" {
     + id [PK]
     ==
-    author_id
     content
+    author_name
     created_at
     updated_at
 }
-
-entity "authors" {
-    + id [PK]
-    ==
-    name
-    details
-    created_at
-    updated_at
-}
-
-authors --|{ phrases
 
 @enduml

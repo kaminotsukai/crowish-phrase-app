@@ -1,5 +1,6 @@
 <template>
     <el-pagination
+        style="margin: 10px;"
         background
         layout="prev, pager, next"
         :total="total"

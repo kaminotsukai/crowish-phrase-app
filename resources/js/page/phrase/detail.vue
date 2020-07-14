@@ -1,11 +1,11 @@
 <template>
     <div>
+        <Header />
         <div class="container">
             <Card
                 :id="phrase.id"
                 :content="phrase.content"
-                :subContent="phrase.author.name"
-                :detail="phrase.author.details"
+                :subContent="phrase.author_name"
             ></Card>
             <el-row>
                 <el-button type="primary" @click="updatePhrase">更新</el-button>
@@ -19,18 +19,20 @@
 <script>
 import phraseApi from '../../api/phraseApi'
 import Card from '../../components/Card/index'
+import Header from '../../components/Header/index'
 
 export default {
     name: 'phrase-detail',
     components: {
-        Card
+        Card,
+        Header
     },
     data() {
         return {
             phrase: {
                 id: null,
                 content: null,
-                author_id: null
+                author_name: null
             }
         }
     },
@@ -44,8 +46,8 @@ export default {
     },
     methods: {
         async init() {
-            const { phrase } = await phraseApi.details(this.id)
-            this.phrase = phrase
+            const { data } = await phraseApi.details(this.id)
+            this.phrase = data.phrase
         },
         async deletePhrase() {
             if (confirm('本当に削除してもよろしいですか？')) {
@@ -76,5 +78,6 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    margin: 0 auto;
 }
 </style>
