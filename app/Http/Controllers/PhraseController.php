@@ -6,6 +6,7 @@ use App\Http\Requests\SavePhraseRequest;
 use App\Phrase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class PhraseController extends Controller
@@ -28,9 +29,19 @@ class PhraseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SavePhraseRequest $request): JsonResponse
+    public function store(Request $request): JsonResponse
     {
+
         $params = $request->all();
+
+        $validator = Validator::make($params , [
+            'content' => 'required',
+            'author_name' => 'required'
+        ]);
+
+        $validator->validate();
+        
+        
         $statusCode = Response::HTTP_CREATED;
 
         try {

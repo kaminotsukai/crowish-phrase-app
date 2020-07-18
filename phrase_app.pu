@@ -3,10 +3,10 @@
 entity "phrases" {
     + id [PK]
     ==
-    content
-    author_name
-    created_at
-    updated_at
+    content: varchar
+    author_name: varchar
+    created_at: datetime
+    updated_at: datetime
 }
 
 @enduml
